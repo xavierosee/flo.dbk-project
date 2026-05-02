@@ -9,6 +9,9 @@ jobs:
   commitlint:
     name: Lint PR title
     runs-on: ubuntu-latest
+    permissions:
+      pull-requests: read
+      statuses: write
     steps:
       - uses: actions/checkout@v4
         with:
