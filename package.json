@@ -1,0 +1,29 @@
+{
+  "name": "dbk-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "prepare": "husky",
+    "install:deps": "echo TODO: add stack-specific install command",
+    "lint": "echo TODO: add stack-specific lint command",
+    "test": "echo TODO: add stack-specific test command",
+    "start": "echo TODO: add stack-specific run command"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xavierosee/flo.dbk-project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xavierosee/flo.dbk-project/issues"
+  },
+  "homepage": "https://github.com/xavierosee/flo.dbk-project#readme",
+  "devDependencies": {
+    "@commitlint/cli": "^20.5.3",
+    "@commitlint/config-conventional": "^20.5.3",
+    "husky": "^9.1.7"
+  }
+}

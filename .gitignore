@@ -1,0 +1,55 @@
+# Dependencies
+node_modules/
+vendor/
+.venv/
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+target/
+
+# Env & secrets
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+*.p12
+
+# Editor & OS
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+Thumbs.db
+
+# Build artifacts
+*.o
+*.a
+*.so
+*.out
+*.class
+*.jar
+*.war
+*.wasm
+
+# Test & coverage
+coverage/
+.coverage
+*.lcov
+htmlcov/
+.pytest_cache/
+.tox/
+
+# Logs
+*.log
+logs/
+
+# Misc
+.cache/
+tmp/
