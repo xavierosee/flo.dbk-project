@@ -34,14 +34,18 @@ Rules:
 
 ## Commands
 
-Always use `make` targets — do not invoke raw tool commands directly:
+npm scripts are the canonical cross-platform interface. The Makefile is a thin
+wrapper for Linux/macOS convenience — it just delegates to npm scripts.
 
-| Target | Purpose |
-|--------|---------|
-| `make install` | Install dependencies |
-| `make lint` | Run linter(s) |
-| `make test` | Run test suite |
-| `make run` | Start the application |
+| npm script (all platforms) | make alias (Linux/macOS) | Purpose |
+|---|---|---|
+| `npm run install:deps` | `make install` | Install dependencies |
+| `npm run lint` | `make lint` | Run linter(s) |
+| `npm run test` | `make test` | Run test suite |
+| `npm run start` | `make run` | Start the application |
+
+**Windows developers:** use `npm run <script>` directly — `make` is not required.
+**Linux/macOS developers:** `make <target>` or `npm run <script>` both work.
 
 ## Testing
 

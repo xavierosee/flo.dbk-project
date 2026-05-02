@@ -4,7 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "prepare": "husky"
+    "prepare": "husky",
+    "install:deps": "echo TODO: add stack-specific install command",
+    "lint": "echo TODO: add stack-specific lint command",
+    "test": "echo TODO: add stack-specific test command",
+    "start": "echo TODO: add stack-specific run command"
   },
   "repository": {
     "type": "git",

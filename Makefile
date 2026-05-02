@@ -1,20 +1,18 @@
-.PHONY: install lint test run
+# Thin wrapper around npm scripts for Linux/macOS convenience.
+# Windows developers: use `npm run <target>` directly.
+.PHONY: install lint test run help
 
 install: ## Install project dependencies
-	# TODO: replace with stack-specific install command
-	npm install
+	npm run install:deps
 
 lint: ## Run linter(s)
-	# TODO: replace with stack-specific lint command (e.g. eslint, ruff, golangci-lint)
-	@echo "No linter configured yet" && exit 0
+	npm run lint
 
 test: ## Run test suite
-	# TODO: replace with stack-specific test command (e.g. jest, pytest, go test)
-	@echo "No tests configured yet" && exit 0
+	npm run test
 
 run: ## Start the application
-	# TODO: replace with stack-specific run command
-	@echo "No run target configured yet" && exit 0
+	npm run start
 
 help: ## Show this help
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "  \033[36m%-10s\033[0m %s\n", $$1, $$2}'
