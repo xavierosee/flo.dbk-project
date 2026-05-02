@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "prepare": "husky",
-    "install:deps": "echo TODO: add stack-specific install command",
+    "install:deps": "node scripts/setup-gstack.js",
     "lint": "echo TODO: add stack-specific lint command",
     "test": "echo TODO: add stack-specific test command",
     "start": "echo TODO: add stack-specific run command"
