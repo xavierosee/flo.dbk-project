@@ -8,11 +8,11 @@ Mode: Builder
 
 ## Problem Statement
 
-There is no directory of pubs serving DBK (Diabolo Banane Kiwi — grenadine + banana syrup + kiwi syrup + lemonade). The drink is a niche but beloved French pub staple, especially in Normandy. Florian wants to build a deliberately over-engineered "guide" to it as a portfolio / fun project — leaning into the absurdity of treating a fruit-syrup drink with Michelin-grade earnestness.
+There is no directory of pubs serving DBK (Diabolo Banane Kiwi — banana syrup + kiwi syrup + lemonade). The drink is a niche but beloved French pub staple, especially in Normandy. Florian wants to build a deliberately over-engineered "guide" to it as a portfolio / fun project — leaning into the absurdity of treating a fruit-syrup drink with Michelin-grade earnestness.
 
 ## What Makes This Cool
 
-The product is **Le Guide DBK**: a Michelin-style *guide intérieur* for a single absurd drink. v1 is hand-curated reviews of 10 real Normandy pubs, written by a fictional persona ("Inspecteur DBK"), scored on a 100-point scale via five sub-axes with deranged French rubric names ("Indice de Grenadine," "Densité Glaçonnaire," "Équilibre Kiwi," "Audace de la Banane," "Verre & Service"). Real venues, satirical rigor — that tension is the whole product. v∞ becomes Untappd-for-DBK ("L'Index DBK") with user accounts and check-ins; v1 is the auteur-critic phase.
+The product is **Le Guide DBK**: a Michelin-style *guide intérieur* for a single absurd drink. v1 is hand-curated reviews of 10 real Normandy pubs, written by a fictional persona ("Inspecteur DBK"), scored on a 100-point scale via five sub-axes with deranged French rubric names ("Densité Glaçonnaire," "Équilibre Kiwi," "Audace de la Banane," "Verre & Service"). Real venues, satirical rigor — that tension is the whole product. v∞ becomes Untappd-for-DBK ("L'Index DBK") with user accounts and check-ins; v1 is the auteur-critic phase.
 
 The "whoa" moment: someone in Normandy opens the site in a pub, sees their local scored 4.2/10 for "lâcheté grenadine," and realizes someone wrote ten of these.
 
@@ -53,7 +53,7 @@ Single static HTML page, all 10 reviews on one scroll. No router, no map, no OG-
 Vite hash-routed app: `/` (ranked index) + `/pub/:id` (full reviews). Mobile-first stack layout. "Près de moi" tab using native Geolocation. Build-time OG images per pub URL. Effort M (1.5–2 weekends).
 
 ### Approach C: Le Guide Cinétique
-Single scroll-driven story page with grenadine-fill animations on each card. Distinctive but deep-link / SEO / 4G-jank tradeoffs make it a poor fit for the in-pub north star.
+Single scroll-driven story page with banana-kiwi-fill animations on each card. Distinctive but deep-link / SEO / 4G-jank tradeoffs make it a poor fit for the in-pub north star.
 
 ## Recommended Approach
 
@@ -129,13 +129,12 @@ No nested routes, no query params in v1.
   "pub_id": "le-coq-rouennais",
   "score_100": 78,                    // sum of the five sub-scores below
   "sub_scores": {                     // each 0–20
-    "grenadine": 18,                  // Indice de Grenadine
     "glacon": 14,                     // Densité Glaçonnaire
     "kiwi": 16,                       // Équilibre Kiwi
     "banane": 17,                     // Audace de la Banane
     "verre": 13                       // Verre & Service
   },
-  "blurb_md": "Une grenadine ample, frôlant la générosité indécente. Le kiwi…",
+  "blurb_md": "Une banane ample, frôlant la générosité indécente. Le kiwi…",
   "author": "Inspecteur DBK",
   "date": "2026-05-04"
 }
@@ -191,7 +190,7 @@ Manual city picker is a v1.1 feature, not v1.
 | 1   | Domain name                    | **lindexdbk.fr** (matches the v∞ "L'Index DBK" name; French-coded for the audience)                           | Florian can swap to `dbk.guide`.         |
 | 2   | Hosting                        | **Cloudflare Pages** (free, fast, custom domain, Git-auto-deploy)                                             | Netlify works equivalently.              |
 | 3   | Author identity                | **"Inspecteur DBK"** persona (allows voice without exposing identity, leans into the bit)                     | Sign as "Florian" if preferred.          |
-| 4   | Rubric                         | 5 axes, each 0–20: Indice de Grenadine, Densité Glaçonnaire, Équilibre Kiwi, Audace de la Banane, Verre & Service. `score_100` = sum. | Add/remove axes before writing reviews.  |
+| 4   | Rubric                         | 4 axes, each 0–20: Densité Glaçonnaire, Équilibre Kiwi, Audace de la Banane, Verre & Service. `score_100` = sum. | Add/remove axes before writing reviews.  |
 | 5   | Reviews from desk vs in-person | Mix: 3–4 from real visits Florian remembers, 6–7 desk-research with publicly available info + plausible scoring. Disclaimer in footer. | Pure in-person if Florian commits time.  |
 
 ## Success Criteria
