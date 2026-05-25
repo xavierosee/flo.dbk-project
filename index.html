@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Le Guide DBK — classement des établissements normands servant le Diabolo Banane-Kiwi, par l'Inspecteur DBK." />
+
+    <!-- OG default (per-pub images generated at build time) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Le Guide DBK" />
+    <meta property="og:title" content="Le Guide DBK" />
+    <meta property="og:description" content="Le classement des diabolos banane-kiwi de Normandie." />
+    <meta property="og:image" content="/og-default.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="preload" href="/fonts/eb-garamond-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
+
+    <title>Le Guide DBK</title>
+
+    <style>
+      /* Critical CSS — prevents FOUC */
+      :root { --bone: #f5efe6; --ink: #1a1815; }
+      html { background: var(--bone); color: var(--ink); }
+      body { margin: 0; min-height: 100vh; }
+      #app { opacity: 0; transition: opacity 0.15s; }
+      #app.ready { opacity: 1; }
+    </style>
+  </head>
+  <body>
+    <div id="app"></div>
+    <footer>
+      <p>Le Guide DBK est une œuvre de fiction satirique. Les notes sont l'opinion de l'Inspecteur DBK.<br>
+      Pour signaler une erreur factuelle ou demander un retrait : <a href="mailto:contact@lindexdbk.fr">contact@lindexdbk.fr</a></p>
+    </footer>
+    <script type="module" src="/src/main.js"></script>
+    <script>
+      // Reveal app after first paint to prevent FOUC
+      document.addEventListener('DOMContentLoaded', () => {
+        requestAnimationFrame(() => {
+          document.getElementById('app').classList.add('ready');
+        });
+      });
+    </script>
+  </body>
+</html>

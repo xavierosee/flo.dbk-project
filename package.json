@@ -1,14 +1,22 @@
 {
   "name": "dbk-project",
-  "version": "1.0.0",
+  "version": "0.1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "prepare": "husky",
-    "install:deps": "node scripts/setup-gstack.js",
-    "lint": "echo TODO: add stack-specific lint command",
-    "test": "echo TODO: add stack-specific test command",
-    "start": "echo TODO: add stack-specific run command"
+    "install:deps": "bun install",
+    "dev": "vite",
+    "build": "node scripts/build-og-images.js && vite build",
+    "build:og": "node scripts/build-og-images.js",
+    "preview": "vite preview",
+    "lint": "echo TODO: add eslint",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "start": "vite"
+  },
+  "engines": {
+    "node": ">=18"
   },
   "repository": {
     "type": "git",
@@ -24,6 +32,13 @@
   "devDependencies": {
     "@commitlint/cli": "^20.5.3",
     "@commitlint/config-conventional": "^20.5.3",
-    "husky": "^9.1.7"
+    "@fontsource/eb-garamond": "^5.2.7",
+    "husky": "^9.1.7",
+    "vite": "^8.0.14",
+    "vitest": "^4.1.7"
+  },
+  "dependencies": {
+    "@resvg/resvg-js": "^2.6.2",
+    "satori": "^0.26.0"
   }
 }
