@@ -1,0 +1,67 @@
+[
+  {
+    "pub_id": "le-coq-rouennais",
+    "sub_scores": {
+      "diabolo": 4,
+      "glacon": 3,
+      "kiwi": 4,
+      "banane": 5,
+      "verre": 3
+    },
+    "blurb_md": "Un diabolo d'une effervescence remarquable, frôlant la générosité indécente. Le kiwi domine avec une autorité tranquille, mais c'est la banane qui surprend : présente, fruitée, presque insolente. Le verre aurait pu être plus grand. On pardonne.",
+    "author": "Inspecteur DBK",
+    "date": "2026-05-04"
+  },
+  {
+    "pub_id": "la-brasserie-du-vieux-port",
+    "sub_scores": {
+      "diabolo": 3,
+      "glacon": 5,
+      "kiwi": 3,
+      "banane": 2,
+      "verre": 4
+    },
+    "blurb_md": "La densité glaçonnaire est exemplaire — on est ici dans le grand œuvre du rafraîchissement. L'audace de la banane, hélas, reste en souffrance : un sirop timide, presque honteux de lui-même. La vue sur le port compense partiellement cette dérobade aromatique.",
+    "author": "Inspecteur DBK",
+    "date": "2026-05-10"
+  },
+  {
+    "pub_id": "le-zinc-caen",
+    "sub_scores": {
+      "diabolo": 5,
+      "glacon": 4,
+      "kiwi": 5,
+      "banane": 4,
+      "verre": 5
+    },
+    "blurb_md": "L'intensité du diabolo confine à la révélation. Chaque gorgée est un traité de chimie appliquée entre l'acidité du kiwi et la douceur capiteuse de la banane. Le verre — large, honnête, généreux — accueille la composition avec la dignité qu'elle mérite. Référence normande.",
+    "author": "Inspecteur DBK",
+    "date": "2026-05-15"
+  },
+  {
+    "pub_id": "bar-les-mouettes",
+    "sub_scores": {
+      "diabolo": 2,
+      "glacon": 2,
+      "kiwi": 2,
+      "banane": 3,
+      "verre": 2
+    },
+    "blurb_md": "Un diabolo aqueux et sans tenue, servi dans un verre à orangeade à la propreté douteuse. Les glaçons, en nombre insuffisant, capitulent au bout de quatre minutes. La banane seule montre quelques signes de vie. On est venu pour la mer ; c'est l'unique consolation disponible.",
+    "author": "Inspecteur DBK",
+    "date": "2026-05-18"
+  },
+  {
+    "pub_id": "la-taverne-normande",
+    "sub_scores": {
+      "diabolo": 4,
+      "glacon": 3,
+      "kiwi": 3,
+      "banane": 4,
+      "verre": 4
+    },
+    "blurb_md": "Cadre authentique, service attentif : la Taverne prend le DBK au sérieux, ce qui n'est pas si commun. L'équilibre kiwi-banane n'atteint pas les sommets, mais l'ensemble est cohérent, bien dosé, sans excès ni timidité. Une valeur sûre pour l'explorateur rouennais.",
+    "author": "Inspecteur DBK",
+    "date": "2026-05-20"
+  }
+]

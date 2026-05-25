@@ -1,0 +1,52 @@
+[
+  {
+    "pub_id": "le-coq-rouennais",
+    "name": "Le Coq Rouennais",
+    "city": "Rouen",
+    "address": "12 rue Saint-Romain, 76000 Rouen",
+    "lat": 49.4395,
+    "lng": 1.0938,
+    "hours_text": "Lun–Sam 16h–02h, Dim fermé",
+    "status": "open"
+  },
+  {
+    "pub_id": "la-brasserie-du-vieux-port",
+    "name": "La Brasserie du Vieux-Port",
+    "city": "Le Havre",
+    "address": "3 quai de la Marine, 76600 Le Havre",
+    "lat": 49.4919,
+    "lng": 0.1063,
+    "hours_text": "Tlj 11h–01h",
+    "status": "open"
+  },
+  {
+    "pub_id": "le-zinc-caen",
+    "name": "Le Zinc",
+    "city": "Caen",
+    "address": "7 rue du Vaugueux, 14000 Caen",
+    "lat": 49.183,
+    "lng": -0.3573,
+    "hours_text": "Mar–Sam 18h–02h, Dim–Lun fermé",
+    "status": "open"
+  },
+  {
+    "pub_id": "bar-les-mouettes",
+    "name": "Bar Les Mouettes",
+    "city": "Dieppe",
+    "address": "15 quai Henri IV, 76200 Dieppe",
+    "lat": 49.9247,
+    "lng": 1.0845,
+    "hours_text": "Tlj 08h–22h",
+    "status": "open"
+  },
+  {
+    "pub_id": "la-taverne-normande",
+    "name": "La Taverne Normande",
+    "city": "Rouen",
+    "address": "42 rue Eau-de-Robec, 76000 Rouen",
+    "lat": 49.4427,
+    "lng": 1.1012,
+    "hours_text": "Mer–Lun 14h–00h, Mar fermé",
+    "status": "open"
+  }
+]
