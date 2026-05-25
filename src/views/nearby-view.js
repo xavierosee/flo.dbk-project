@@ -1,6 +1,6 @@
 import { getRankedPubs } from '../lib/data.js';
 import { renderPubCard } from '../components/pub-card.js';
-import { getCurrentPosition, isInNormandy, sortByDistance } from '../lib/geo.js';
+import { getCurrentPosition, haversineKm, isInNormandy, sortByDistance } from '../lib/geo.js';
 
 export async function mountNearbyView(container) {
   container.innerHTML = `
@@ -63,13 +63,7 @@ export async function mountNearbyView(container) {
 
   sorted.forEach(pub => {
     const distKm = position
-      ? Math.round(((6371 * Math.acos(
-          Math.cos((position.lat * Math.PI) / 180) *
-          Math.cos((pub.lat * Math.PI) / 180) *
-          Math.cos(((pub.lng - position.lng) * Math.PI) / 180) +
-          Math.sin((position.lat * Math.PI) / 180) *
-          Math.sin((pub.lat * Math.PI) / 180)
-        )) * 10)) / 10
+      ? Math.round(haversineKm(position.lat, position.lng, pub.lat, pub.lng) * 10) / 10
       : null;
     list.appendChild(renderPubCard(pub, { distanceKm: distKm }));
   });

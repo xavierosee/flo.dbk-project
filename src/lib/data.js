@@ -6,6 +6,7 @@ export async function loadData() {
     fetch('/data/pubs.json'),
     fetch('/data/ratings.json'),
   ]);
+  if (!pubsRes.ok || !ratingsRes.ok) throw new Error('Failed to load data');
   const pubs = await pubsRes.json();
   const ratings = await ratingsRes.json();
   const ratingsMap = Object.fromEntries(ratings.map(r => [r.pub_id, r]));
