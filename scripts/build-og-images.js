@@ -29,8 +29,8 @@ mkdirSync(outDir, { recursive: true });
 // Load EB Garamond font for satori
 let fontData;
 const fontPaths = [
-  join(root, 'node_modules/@fontsource/eb-garamond/files/eb-garamond-latin-700-normal.woff2'),
   join(root, 'node_modules/@fontsource/eb-garamond/files/eb-garamond-latin-700-normal.woff'),
+  join(root, 'node_modules/@fontsource/eb-garamond/files/eb-garamond-latin-700-normal.woff2'),
 ];
 for (const p of fontPaths) {
   if (existsSync(p)) {
