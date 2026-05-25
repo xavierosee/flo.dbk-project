@@ -14,6 +14,7 @@ function stars(n, max = 5) {
 export function renderScoreHero(score) {
   const el = document.createElement('div');
   el.className = 'score-hero';
+  el.setAttribute('role', 'img');
   el.setAttribute('aria-label', `Note globale : ${score.toFixed(1).replace('.', ',')} sur 5`);
   el.innerHTML = `
     <span class="score-number" aria-hidden="true">${score.toFixed(1).replace('.', ',')}</span>
