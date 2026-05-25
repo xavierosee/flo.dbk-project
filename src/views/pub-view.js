@@ -58,6 +58,17 @@ export async function mountPubView(container, { id }) {
       article.appendChild(review);
     }
 
+    const shareUrl = `${location.origin}/pub/${pub.pub_id}`;
+    const tweetText = pub.score !== null
+      ? `« ${pub.name} » (${pub.city}) — note Inspecteur DBK : ${pub.score}/5 🍹 #LeGuideDBK`
+      : `« ${pub.name} » (${pub.city}) — Le Guide DBK 🍹 #LeGuideDBK`;
+    const tweetHref = `https://x.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(tweetText)}`;
+
+    const shareSection = document.createElement('div');
+    shareSection.className = 'pub-detail__share';
+    shareSection.innerHTML = `<a href="${tweetHref}" target="_blank" rel="noopener noreferrer" class="share-x-link">Partager sur X</a>`;
+    article.appendChild(shareSection);
+
   } catch {
     main.innerHTML = '<p class="error">Impossible de charger ce bar.</p>';
   }
