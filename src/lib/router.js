@@ -9,6 +9,12 @@ export function startRouter() {
   dispatch();
 }
 
+let _notFound = null;
+
+export function notFound(handler) {
+  _notFound = handler;
+}
+
 function dispatch() {
   const hash = location.hash.replace(/^#/, '') || '/';
   for (const { pattern, handler } of routes) {
@@ -18,6 +24,7 @@ function dispatch() {
       return;
     }
   }
+  if (_notFound) _notFound();
 }
 
 function matchRoute(pattern, path) {

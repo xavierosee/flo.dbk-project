@@ -1,7 +1,7 @@
 import '@fontsource/eb-garamond/700.css';
 import './styles/guide.css';
 
-import { route, startRouter } from './lib/router.js';
+import { route, notFound, startRouter } from './lib/router.js';
 import { mountIndexView } from './views/index-view.js';
 import { mountPubView } from './views/pub-view.js';
 import { mountNearbyView } from './views/nearby-view.js';
@@ -17,5 +17,6 @@ function mount(fn, params) {
 route('/', () => mount(mountIndexView));
 route('/pub/:id', params => mount(mountPubView, params));
 route('/nearby', () => mount(mountNearbyView));
+notFound(() => mount(mountNotFoundView));
 
 startRouter();
