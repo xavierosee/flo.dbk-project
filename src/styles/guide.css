@@ -98,9 +98,21 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
   grid-template-rows: auto auto auto;
   gap: 0.25rem 1rem;
   align-items: start;
+  position: relative;
 }
 
 .pub-card:focus-within { outline: 2px solid var(--accent); }
+
+.pub-card__link {
+  color: inherit;
+  text-decoration: none;
+}
+.pub-card__link::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+}
+.pub-card__link:focus { outline: none; }
 
 .pub-card__meta {
   grid-column: 1;
@@ -108,7 +120,7 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
   align-items: center;
   gap: 0.5rem;
   font-size: 0.75rem;
-  color: color-mix(in srgb, var(--ink) 55%, transparent);
+  color: color-mix(in srgb, var(--ink) 65%, transparent);
 }
 
 .pub-card__rank {
@@ -242,7 +254,7 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
   display: flex;
   gap: 1rem;
   font-size: 0.8rem;
-  color: color-mix(in srgb, var(--ink) 55%, transparent);
+  color: color-mix(in srgb, var(--ink) 65%, transparent);
   text-transform: uppercase;
   letter-spacing: 0.08em;
 }
@@ -293,7 +305,7 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
   margin-bottom: 1rem;
 }
 
-.loading { color: color-mix(in srgb, var(--ink) 50%, transparent); padding: 2rem 0; }
+.loading { color: color-mix(in srgb, var(--ink) 65%, transparent); padding: 2rem 0; }
 .error   { color: var(--accent); padding: 1rem 0; }
 
 /* ── 404 ────────────────────────────────────────────── */
@@ -340,6 +352,6 @@ footer {
   margin-top: 3rem;
   padding: 1.5rem 0 2rem;
   font-size: 0.75rem;
-  color: color-mix(in srgb, var(--ink) 50%, transparent);
+  color: color-mix(in srgb, var(--ink) 65%, transparent);
   line-height: 1.6;
 }
