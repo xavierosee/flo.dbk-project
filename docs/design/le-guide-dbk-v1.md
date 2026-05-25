@@ -8,13 +8,13 @@ Mode: Builder
 
 ## Problem Statement
 
-There is no directory of pubs serving DBK (Diabolo Banane Kiwi — banana syrup + kiwi syrup + lemonade). The drink is a niche but beloved French pub staple, especially in Normandy. Florian wants to build a deliberately over-engineered "guide" to it as a portfolio / fun project — leaning into the absurdity of treating a fruit-syrup drink with Michelin-grade earnestness.
+There is no directory of pubs serving DBK (Diabolo Banane-Kiwi — limonade + sirop de banane + sirop de kiwi, servi avec glaçons et une paille). The drink is a regional speciality, apparently common in Normandy but unknown in much of France. Florian wants to build a deliberately over-engineered "guide" to it as a portfolio / fun project — leaning into the absurdity of treating a fruit-syrup drink with Michelin-grade earnestness.
 
 ## What Makes This Cool
 
-The product is **Le Guide DBK**: a Michelin-style *guide intérieur* for a single absurd drink. v1 is hand-curated reviews of 10 real Normandy pubs, written by a fictional persona ("Inspecteur DBK"), scored on a 100-point scale via five sub-axes with deranged French rubric names ("Densité Glaçonnaire," "Équilibre Kiwi," "Audace de la Banane," "Verre & Service"). Real venues, satirical rigor — that tension is the whole product. v∞ becomes Untappd-for-DBK ("L'Index DBK") with user accounts and check-ins; v1 is the auteur-critic phase.
+The product is **Le Guide DBK**: a Michelin-style *guide intérieur* for a single absurd drink. v1 is hand-curated reviews of 10 real Normandy pubs, written by a fictional persona ("Inspecteur DBK"), scored on a 1–5 star scale (Google-Maps style) across five sub-axes with deranged French rubric names ("Intensité du Diabolo," "Densité Glaçonnaire," "Équilibre Kiwi," "Audace de la Banane," "Verre & Service"). Real venues, satirical rigor — that tension is the whole product. v∞ becomes Untappd-for-DBK ("L'Index DBK") with user accounts and check-ins; v1 is the auteur-critic phase.
 
-The "whoa" moment: someone in Normandy opens the site in a pub, sees their local scored 4.2/10 for "lâcheté grenadine," and realizes someone wrote ten of these.
+The "whoa" moment: someone in Normandy opens the site in a pub, sees their local scored 4.2/10 for "diabolo aqueux et sans tenue," and realizes someone wrote ten of these.
 
 ## Constraints
 
@@ -53,7 +53,7 @@ Single static HTML page, all 10 reviews on one scroll. No router, no map, no OG-
 Vite hash-routed app: `/` (ranked index) + `/pub/:id` (full reviews). Mobile-first stack layout. "Près de moi" tab using native Geolocation. Build-time OG images per pub URL. Effort M (1.5–2 weekends).
 
 ### Approach C: Le Guide Cinétique
-Single scroll-driven story page with banana-kiwi-fill animations on each card. Distinctive but deep-link / SEO / 4G-jank tradeoffs make it a poor fit for the in-pub north star.
+Single scroll-driven story page with score-fill animations on each card. Distinctive but deep-link / SEO / 4G-jank tradeoffs make it a poor fit for the in-pub north star.
 
 ## Recommended Approach
 
@@ -84,7 +84,7 @@ No nested routes, no query params in v1.
 ├── public/
 │   └── data/
 │       ├── pubs.json            # [{ pub_id, name, city, address, lat, lng, hours_text, ... }]
-│       └── ratings.json         # [{ pub_id, score_100, sub_scores, blurb_md, author, date }]
+│       └── ratings.json         # [{ pub_id, sub_scores (1–5 each), blurb_md, author, date }]
 ├── src/
 │   ├── main.js                  # Router init, view mounting
 │   ├── views/
@@ -94,7 +94,7 @@ No nested routes, no query params in v1.
 │   │   └── not-found-view.js    # Charming 404 in Inspecteur DBK voice
 │   ├── components/
 │   │   ├── pub-card.js          # Reusable score-forward card (typographic hero, no photo)
-│   │   └── score-display.js     # Big 100-point number + sub-score breakdown
+│   │   └── score-display.js     # Big star rating (mean, 1 decimal) + per-axis star breakdown
 │   ├── lib/
 │   │   ├── data.js              # Loads + joins pubs.json + ratings.json by pub_id
 │   │   ├── geo.js               # Geolocation API + haversine distance
@@ -127,27 +127,27 @@ No nested routes, no query params in v1.
 // ratings.json
 {
   "pub_id": "le-coq-rouennais",
-  "score_100": 78,                    // sum of the five sub-scores below
-  "sub_scores": {                     // each 0–20
-    "glacon": 14,                     // Densité Glaçonnaire
-    "kiwi": 16,                       // Équilibre Kiwi
-    "banane": 17,                     // Audace de la Banane
-    "verre": 13                       // Verre & Service
+  "sub_scores": {                     // each 1–5 stars (integer), Google-Maps style
+    "diabolo": 4,                      // Intensité du Diabolo
+    "glacon": 3,                      // Densité Glaçonnaire
+    "kiwi": 4,                        // Équilibre Kiwi
+    "banane": 5,                      // Audace de la Banane
+    "verre": 3                        // Verre & Service
   },
-  "blurb_md": "Une banane ample, frôlant la générosité indécente. Le kiwi…",
+  "blurb_md": "Un diabolo d'une effervescence remarquable, frôlant la générosité indécente. Le kiwi…",
   "author": "Inspecteur DBK",
   "date": "2026-05-04"
 }
 ```
 
-`score_100` is the explicit sum of the five 0–20 sub-scores. The author sets sub-scores; the sum is computed at build time and validated by `data.test.js`.
+Stars 1–5, Google-Maps style. The author sets the five 1–5 sub-scores; the overall rating is the **mean of the five**, displayed to one decimal with a partial star (e.g. 3.8★). The overall is computed (not stored). `data.test.js` validates each sub-score is an integer in 1–5 and tests the mean computation. (Changed 2026-05-25 from a /100 sum of 0–20 sub-scores.)
 
 ### v1 scope (the realistic 48-hour plan)
 
 | Hours  | Deliverable                                                                                               |
 | ------ | --------------------------------------------------------------------------------------------------------- |
 | 0–3    | Register `lindexdbk.fr`. Vite scaffold. Cloudflare Pages auto-deploy from `main`. Empty page live.        |
-| 3–9    | Draft rubric (5 axes, 0–20 each). Write **5 seed reviews** to stress-test it. Rubric stays mutable.       |
+| 3–9    | Draft rubric (5 axes, 1–5 stars each). Write **5 seed reviews** to stress-test it. Rubric stays mutable.   |
 | 9–18   | `pub-card` + `score-display` components. Ranked index view. French chrome. **Freeze rubric at hour 18.**  |
 | 18–26  | `/pub/:id` detail view. 404 view. Hash router (see Router spec below).                                    |
 | 26–34  | Build-time OG images via Satori + `@resvg/resvg-js` (SVG→PNG). `<meta property="og:image">` per pub URL.  |
@@ -177,11 +177,11 @@ Manual city picker is a v1.1 feature, not v1.
 
 - **Display**: EB Garamond 700, self-hosted via `@fontsource/eb-garamond` (full Latin subset, ~50KB woff2 — accepted; manual subsetting via `subfont` deferred to v1.1 unless Lighthouse fails). `<link rel="preload" as="font" crossorigin>` in `index.html`.
 - **Body**: system stack (`-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif`) — fast, native feel.
-- **Sizes**: body 16px / 1.55 line-height / max-width 65ch. Pub name (`<h1>`) 28px on mobile, 36px desktop. Score 96px on mobile, 128px desktop.
+- **Sizes**: body 16px / 1.55 line-height / max-width 65ch. Pub name (`<h1>`) 28px on mobile, 36px desktop. Star rating block (stars + decimal number) sized as the hero anchor: decimal number 96px on mobile, 128px desktop; stars scaled to match.
 - **Tap targets**: ≥44×44px minimum (Apple HIG). List rows ≥56px tall.
 - **Color**: bone (`#f5efe6`) bg, ink (`#1a1815`) text, single accent (`#7e2620` — wine-port red) for score and underlines. Contrast: ink-on-bone = 14.8:1 (AAA), accent-on-bone = 7.4:1 (AAA for normal text). No greens, no rainbows.
 - **Critical CSS** inlined in `<head>`; rest deferred. Goal: First Contentful Paint < 1s on Slow 4G.
-- **Accessibility**: focus order = DOM order, `<h1>` for pub name, score in `<dl><dt>Score</dt><dd>78</dd></dl>` so screen readers announce it semantically.
+- **Accessibility**: focus order = DOM order, `<h1>` for pub name. Star rating exposed to screen readers as text, not just glyphs — e.g. `aria-label="Note globale : 3,8 sur 5"` and each axis as `<dl><dt>Intensité du Diabolo</dt><dd aria-label="4 sur 5">★★★★☆</dd></dl>`. Decorative star glyphs marked `aria-hidden`.
 
 ## Open Questions (pre-resolved with defaults)
 
@@ -190,7 +190,7 @@ Manual city picker is a v1.1 feature, not v1.
 | 1   | Domain name                    | **lindexdbk.fr** (matches the v∞ "L'Index DBK" name; French-coded for the audience)                           | Florian can swap to `dbk.guide`.         |
 | 2   | Hosting                        | **Cloudflare Pages** (free, fast, custom domain, Git-auto-deploy)                                             | Netlify works equivalently.              |
 | 3   | Author identity                | **"Inspecteur DBK"** persona (allows voice without exposing identity, leans into the bit)                     | Sign as "Florian" if preferred.          |
-| 4   | Rubric                         | 4 axes, each 0–20: Densité Glaçonnaire, Équilibre Kiwi, Audace de la Banane, Verre & Service. `score_100` = sum. | Add/remove axes before writing reviews.  |
+| 4   | Rubric                         | 5 axes, each 1–5 stars: Intensité du Diabolo, Densité Glaçonnaire, Équilibre Kiwi, Audace de la Banane, Verre & Service. Overall = mean (1 decimal). | Add/remove axes before writing reviews.  |
 | 5   | Reviews from desk vs in-person | Mix: 3–4 from real visits Florian remembers, 6–7 desk-research with publicly available info + plausible scoring. Disclaimer in footer. | Pure in-person if Florian commits time.  |
 
 ## Success Criteria
