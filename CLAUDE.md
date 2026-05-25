@@ -55,7 +55,26 @@ wrapper for Linux/macOS convenience — it just delegates to npm scripts.
 
 ## Stack
 
-Stack TBD — update this section and the `Makefile` targets once decided.
+Vite + vanilla JS/HTML/CSS. No framework. Runtime: Bun (no Node installed on this machine).
+
+| Tool | Role |
+|------|------|
+| Vite | Dev server + production build |
+| Vitest | Test runner (`tests/` directory) |
+| EB Garamond | Display font via `@fontsource/eb-garamond` |
+| satori + @resvg/resvg-js | Build-time OG image generation (`scripts/build-og-images.js`) |
+
+Data lives in `public/data/pubs.json` and `public/data/ratings.json`, keyed by `pub_id`.
+Hash-based router in `src/lib/router.js` — routes: `#/`, `#/pub/:id`, `#/nearby`.
+
+## Testing
+
+Run: `bun run test` (or `make test`)
+Tests: `tests/data.test.js`, `tests/geo.test.js`, `tests/og.test.js`
+
+- `data.test.js` — schema validation, pub_id uniqueness, computeScore math
+- `geo.test.js` — haversine correctness, Normandy bounding box, sortByDistance
+- `og.test.js` — asserts each pub has a built OG PNG > 5KB (skips if not yet built)
 
 ## gstack
 

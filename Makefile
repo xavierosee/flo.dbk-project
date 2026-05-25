@@ -1,18 +1,24 @@
-# Thin wrapper around npm scripts for Linux/macOS convenience.
-# Windows developers: use `npm run <target>` directly.
-.PHONY: install lint test run help
+# Thin wrapper around bun scripts for Linux/macOS convenience.
+# Windows developers: use `bun run <target>` directly.
+.PHONY: install lint test run build preview help
 
 install: ## Install project dependencies
-	npm run install:deps
+	bun install
 
 lint: ## Run linter(s)
-	npm run lint
+	bun run lint
 
 test: ## Run test suite
-	npm run test
+	bun run test
 
-run: ## Start the application
-	npm run start
+run: ## Start the dev server
+	bun run dev
+
+build: ## Production build (OG images + Vite)
+	bun run build
+
+preview: ## Preview the production build
+	bun run preview
 
 help: ## Show this help
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "  \033[36m%-10s\033[0m %s\n", $$1, $$2}'
