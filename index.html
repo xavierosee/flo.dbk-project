@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Le Guide DBK — classement des établissements normands servant le Diabolo Banane-Kiwi, par l'Inspecteur DBK." />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍹</text></svg>" />
 
     <!-- OG default (per-pub images generated at build time) -->
     <meta property="og:type" content="website" />
@@ -19,19 +20,28 @@
 
     <style>
       /* Critical CSS — prevents FOUC */
-      :root { --bone: #f5efe6; --ink: #1a1815; }
+      :root { --bone: #f5efe6; --ink: #1a1815; --accent: #7e2620; }
       html { background: var(--bone); color: var(--ink); }
       body { margin: 0; min-height: 100vh; }
       #app { opacity: 0; transition: opacity 0.15s; }
       #app.ready { opacity: 1; }
+      .skip-link {
+        position: absolute;
+        left: -9999px;
+        top: 1rem;
+        z-index: 999;
+        background: var(--ink);
+        color: var(--bone);
+        padding: 0.5rem 1rem;
+        font-size: 0.875rem;
+        text-decoration: none;
+      }
+      .skip-link:focus { left: 1rem; }
     </style>
   </head>
   <body>
+    <a href="#main-content" class="skip-link">Aller au contenu principal</a>
     <div id="app"></div>
-    <footer>
-      <p>Le Guide DBK est une œuvre de fiction satirique. Les notes sont l'opinion de l'Inspecteur DBK.<br>
-      Pour signaler une erreur factuelle ou demander un retrait : <a href="mailto:contact@lindexdbk.fr">contact@lindexdbk.fr</a></p>
-    </footer>
     <script type="module" src="/src/main.js"></script>
     <script>
       // Reveal app after first paint to prevent FOUC

@@ -21,10 +21,25 @@ function dispatch() {
     const match = matchRoute(pattern, hash);
     if (match !== null) {
       handler(match);
+      focusMain();
       return;
     }
   }
-  if (_notFound) _notFound();
+  if (_notFound) {
+    _notFound();
+    focusMain();
+  }
+}
+
+function focusMain() {
+  if (typeof requestAnimationFrame === 'undefined') return;
+  requestAnimationFrame(() => {
+    const main = document.getElementById('main-content');
+    if (main) {
+      main.setAttribute('tabindex', '-1');
+      main.focus({ preventScroll: true });
+    }
+  });
 }
 
 function matchRoute(pattern, path) {
