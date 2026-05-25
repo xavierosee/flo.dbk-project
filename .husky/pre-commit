@@ -1,1 +1,7 @@
+branch=$(git branch --show-current)
+if [ "$branch" = "main" ] || [ "$branch" = "master" ]; then
+  echo "error: direct commits to '$branch' are not allowed — create a feature branch first"
+  exit 1
+fi
+
 bun run lint
